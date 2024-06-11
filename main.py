@@ -10,20 +10,17 @@ Base.metadata.create_all(bind=engine)
 
 app = FastAPI()
 
-# Set up CORS
-origins = [
-    "*"
-]
+
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=origins,
+    allow_origins=["*"],  
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
 
-# Dependency to get the database session
+
 def get_db():
     db = SessionLocal()
     try:
