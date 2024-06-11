@@ -14,11 +14,11 @@ app = FastAPI()
 
 
 origins = [
-    "https://fastapi-tutorial.netlify.app",
-    "https://fastapi-tutorial.netlify.app/",
-    "https://fastapi-tutorial.netlify.app/tutorial",
+
     "http://localhost:3000",  
-    "https://fast-api-tutorial-backend.vercel.app/"
+    "https://fast-api-tutorial-backend.vercel.app/",
+    "https://fastapi-tutorial.netlify.app"
+    "https://fastapi-tutorial.netlify.app/tutorial"
 ]
 
 app.add_middleware(
