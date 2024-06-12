@@ -67,4 +67,5 @@ def delete_ceo(ceo_id: int, db: Session = Depends(get_db)):
     db_ceo = crud.get_ceo_by_id(db, ceo_id=ceo_id)
     if db_ceo is None:
         raise HTTPException(status_code=404, detail="CEO not found")
-    return crud.delete_ceo(db=db, ceo_id=ceo_id)
+    crud.delete_ceo(db=db, ceo_id=ceo_id)
+    return db_ceo

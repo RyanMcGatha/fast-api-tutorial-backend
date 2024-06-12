@@ -29,4 +29,3 @@ def delete_ceo(db: Session, ceo_id: int):
     if db_ceo:
         db.delete(db_ceo)
         db.commit()
-    return db_ceo
