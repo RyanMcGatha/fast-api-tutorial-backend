@@ -29,14 +29,14 @@ def get_db():
 def read_root():
     return {"Hello": "World"}
 
-@app.get("/ceos/{ceo_id}", response_model=schemas.CEO)
+@app.get("/ceos/id/{ceo_id}", response_model=schemas.CEO)
 def read_ceo_by_id(ceo_id: int, db: Session = Depends(get_db)):
     db_ceo = crud.get_ceo_by_id(db, ceo_id=ceo_id)
     if db_ceo is None:
         raise HTTPException(status_code=404, detail="CEO not found")
     return db_ceo
 
-@app.get("/ceos/{ceo_name}", response_model=schemas.CEO)
+@app.get("/ceos/name/{ceo_name}", response_model=schemas.CEO)
 def read_ceo_by_name(ceo_name: str, db: Session = Depends(get_db)):
     db_ceo = crud.get_ceo_by_name(db, ceo_name=ceo_name)
     if db_ceo is None:
