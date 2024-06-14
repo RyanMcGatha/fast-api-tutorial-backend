@@ -14,3 +14,13 @@ def create_ceo(db: Session, ceo: schemas.CEOCreate):
     db.commit()
     db.refresh(db_ceo)
     return db_ceo
+
+
+
+def delete_ceo(db: Session, ceo_id: int):
+    db_ceo = db.query(models.CEO).filter(models.CEO.id == ceo_id).first()
+    if db_ceo is None:
+        return None
+    db.delete(db_ceo)
+    db.commit()
+    return db_ceo

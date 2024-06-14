@@ -46,3 +46,10 @@ def read_ceo_by_name(ceo_name: str, db: Session = Depends(get_db)):
 @app.post("/ceos/id/{ceo_id}", response_model=schemas.CEO)
 def create_ceo(ceo_id: int, ceo: schemas.CEOCreate = Body(...), db: Session = Depends(get_db)):
     return crud.create_ceo(db=db, ceo=ceo)
+
+@app.delete("/ceos/id/{ceo_id}", response_model=schemas.CEO)
+def delete_ceo(ceo_id: int, db: Session = Depends(get_db)):
+    db_ceo = crud.delete_ceo(db, ceo_id=ceo_id)
+    if db_ceo is None:
+        raise HTTPException(status_code=404, detail="CEO not found")
+    return db_ceo
