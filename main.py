@@ -43,6 +43,7 @@ def read_ceo_by_name(ceo_name: str, db: Session = Depends(get_db)):
         raise HTTPException(status_code=404, detail="CEO not found")
     return db_ceo
 
+
 @app.post("/ceos", response_model=schemas.CEO)
 def create_ceo(ceo: schemas.CEOCreate = Body(...), db: Session = Depends(get_db)):
     return crud.create_ceo(db=db, ceo=ceo)
