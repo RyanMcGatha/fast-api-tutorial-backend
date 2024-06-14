@@ -15,8 +15,6 @@ def create_ceo(db: Session, ceo: schemas.CEOCreate):
     db.refresh(db_ceo)
     return db_ceo
 
-
-
 def delete_ceo(db: Session, ceo_id: int):
     db_ceo = db.query(models.CEO).filter(models.CEO.id == ceo_id).first()
     if db_ceo is None:
@@ -25,7 +23,6 @@ def delete_ceo(db: Session, ceo_id: int):
     db.commit()
     return db_ceo
 
-
 def delete_ceo_by_name(db: Session, ceo_name: str):
     db_ceo = db.query(models.CEO).filter(models.CEO.name == ceo_name).first()
     if db_ceo is None:
@@ -33,7 +30,6 @@ def delete_ceo_by_name(db: Session, ceo_name: str):
     db.delete(db_ceo)
     db.commit()
     return db_ceo
-
 
 def update_ceo_by_id(db: Session, ceo_id: int, ceo: schemas.CEOUpdate):
     db_ceo = db.query(models.CEO).filter(models.CEO.id == ceo_id).first()
